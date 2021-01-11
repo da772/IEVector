@@ -156,6 +156,8 @@ class Vector3 {
         inline Vector3(const Vector3<T>& other) : x(other.x),y(other.y),z(other.z) {}
         inline Vector3(const Vector4<T>& other) : x(other.x), y(other.y), z(other.z) {}
         inline Vector3(const T* ptr) : x(ptr[0]), y(ptr[1]), z(ptr[2]) {};
+		inline Vector3(const Vector2<T>& v, const T& z) : x(v.x), y(v.y), z(z) {};
+		inline Vector3(const T& x, const Vector2<T>& v) : x(x), y(v.x), z(v.y){};
 
         T x;
         T y;
@@ -318,7 +320,13 @@ class Vector4 {
     public:
         inline Vector4() : x(0.f), y(0.f), z(0.f), w(0.f) {}
         inline Vector4(const T& v) : x(v), y(v), z(v), w(v) {};
-        inline Vector4(const T& x, const T& y, const T& z, const T& w) : x(x),y(y),z(z),w(w) {}
+        inline Vector4(const Vector2<T>& v, const T& z, const T&, w) : x(v.x), y(v.y), z(z), w(w) {};
+        inline Vector4(const T& x, const T& y, const Vector2<T>& v) : x(x), y(y), z(v.x), w(v.y) {};
+        inline Vector4(const T& x,const Vector2<T>& v, const T& w ) : x(x), y(v.x), z(v.y), w(w) {};
+        inline Vector4(const Vector3<T>& v, const T& w) : x(v.x), y(v.y), z(v.z), w(w) {};
+        inline Vector4(const T& x, const Vector3<T>& v) : x(x), y(v.x), z(v.y), w(v.z) {};
+        inline Vector4(const T& x, const T& y, const T& z, const T& w) : x(x), y(y), z(z), w(w) {};
+
         inline Vector4(const Vector4<T>& other) : x(other.x),y(other.y),z(other.z),w(other.w) {}
         inline Vector4(const T* ptr) : x(ptr[0]), y(ptr[1]), z(ptr[2]), w(ptr[3]) {};
         
